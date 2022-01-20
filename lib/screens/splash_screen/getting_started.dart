@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/screens/login_screen/login_screen.dart';
 import 'package:food_app/utils/app_colors.dart';
 
 class GettingStart extends StatefulWidget {
@@ -35,53 +36,57 @@ class _GettingStartState extends State<GettingStart> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          CarouselSlider(
-            options: CarouselOptions(
-                height: size.height / 2,
-                autoPlay: true,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _current = index;
-                  });
-                }),
-            carouselController: carouselController,
-            items: list.map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    width: size.width,
-                    child: Column(
-                      children: [i],
-                    ),
-                  );
-                },
-              );
-            }).toList(),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: list.asMap().entries.map((entry) {
-              return GestureDetector(
-                onTap: () => carouselController.animateToPage(entry.key),
-                child: Container(
-                  width: 12.0,
-                  height: 12.0,
-                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: _current == entry.key ? primaryColor : greyColor),
-                ),
-              );
-            }).toList(),
-          ),
-          bottom_part(
-            size: size,
-            ontap: () => carouselController.nextPage(),
-          ),
-        ],
+      body: GestureDetector(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            CarouselSlider(
+              options: CarouselOptions(
+                  height: size.height / 2,
+                  autoPlay: true,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  }),
+              carouselController: carouselController,
+              items: list.map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Container(
+                      width: size.width,
+                      child: Column(
+                        children: [i],
+                      ),
+                    );
+                  },
+                );
+              }).toList(),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: list.asMap().entries.map((entry) {
+                return GestureDetector(
+                  onTap: () => carouselController.animateToPage(entry.key),
+                  child: Container(
+                    width: 12.0,
+                    height: 12.0,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color:
+                            _current == entry.key ? primaryColor : greyColor),
+                  ),
+                );
+              }).toList(),
+            ),
+            Bottom_part(
+              size: size,
+              ontap: () => carouselController.nextPage(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -124,8 +129,8 @@ class SliderItem extends StatelessWidget {
   }
 }
 
-class bottom_part extends StatelessWidget {
-  const bottom_part({
+class Bottom_part extends StatelessWidget {
+  const Bottom_part({
     Key? key,
     required this.size,
     required this.ontap,
@@ -167,7 +172,12 @@ class bottom_part extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()));
+                          },
                           child: Text("Skip",
                               style:
                                   TextStyle(color: Colors.black, fontSize: 21)))

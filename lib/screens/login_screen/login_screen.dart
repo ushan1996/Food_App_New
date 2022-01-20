@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Container(
         color: Color(0xffE5E5E5),
+        height: size.height,
         child: Stack(
           children: [
             Image.asset(
@@ -26,70 +27,70 @@ class _LoginScreenState extends State<LoginScreen> {
               width: size.width,
               fit: BoxFit.fill,
             ),
-            Column(
-              children: [
-                SizedBox(
-                  height: 70,
-                ),
-                Text(
-                  "Login",
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 70,
                   ),
-                ),
-                Text(
-                  "Access account",
-                  style: TextStyle(fontSize: 27),
-                ),
-                SizedBox(
-                  height: 35,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          elevation: 2,
-                          primary: Colors.white,
-                          padding: EdgeInsets.all(10),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                      onPressed: () {},
-                      child: Image.asset(
-                        'assets/images/fb.png',
+                  Text(
+                    "Login",
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "Access account",
+                    style: TextStyle(fontSize: 27),
+                  ),
+                  SizedBox(
+                    height: 35,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            elevation: 2,
+                            primary: Colors.white,
+                            padding: EdgeInsets.all(10),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15))),
+                        onPressed: () {},
+                        child: Image.asset(
+                          'assets/images/fb.png',
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          elevation: 2,
-                          primary: Colors.white,
-                          padding: EdgeInsets.all(10),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15))),
-                      onPressed: () {},
-                      child: Image.asset(
-                        'assets/images/google.png',
+                      SizedBox(
+                        width: 20,
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "or Login with Email",
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: SingleChildScrollView(
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            elevation: 2,
+                            primary: Colors.white,
+                            padding: EdgeInsets.all(10),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15))),
+                        onPressed: () {},
+                        child: Image.asset(
+                          'assets/images/google.png',
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "or Login with Email",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -187,8 +188,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
